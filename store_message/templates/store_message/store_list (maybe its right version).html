@@ -1,0 +1,39 @@
+{% extends 'store_message/base.html' %}
+{% block content %}
+
+<h2 class="display-6 text-center mb-4">Сообщения</h2>
+
+<div class="table-responsive">
+    <table class="table text-center">
+        <thead>
+        <tr>
+            <th style="width: 5%;">№№</th>
+            <th style="width: 20%;">Тема</th>
+            <th style="width: 35%;">Описание</th>
+            <th style="width: 10%;">Вложения</th>
+            <th style="width: 15%;">Дата отправки</th>
+            <th style="width: 15%;">Дата получения</th>
+        </tr>
+        </thead>
+        {% for store in emails %}
+        <tbody>
+        <tr>
+            <th scope="row">{{ store.id }}</th>
+            <td> {{ store.theme }}</td>
+            <td>{{ store.description|truncatechars:50 }}</td>
+            <td>{{ store.attachment }}</td>
+            {% if store.attachment %}
+            <td>
+                <svg class="bi" width="24" height="24">
+                    <use xlink:href="#check"/>
+                </svg>
+            </td>
+            {% endif %}
+            <td scope="row" class="text-start">{{ store.date_sanding }}</td>
+            <td scope="row" class="text-start">{{ store.date_receiving }}</td>
+        </tr>
+        </tbody>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}

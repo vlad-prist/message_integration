@@ -1,0 +1,17 @@
+{% extends 'store_message/base.html' %}
+{% block content %}
+
+<h2 class="display-6 text-center mb-4">Сообщения</h2>
+
+<div class="table-responsive">
+    <table class="table text-center">
+        {% for store in emails %}
+        <tbody>
+        <tr>
+            <td scope="row" class="text-start">{{ store }}</td>
+        </tr>
+        </tbody>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}
